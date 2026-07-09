@@ -1,0 +1,770 @@
+/* ============================================
+   DESIGN SYSTEM & VARIABLES
+   ============================================ */
+:root {
+    --primary: #6c5ce7;
+    --primary-light: #a29bfe;
+    --primary-dark: #4834d4;
+    --accent: #fd79a8;
+    --accent-glow: #e84393;
+    --surface: rgba(255, 255, 255, 0.08);
+    --surface-solid: rgba(30, 30, 60, 0.85);
+    --glass: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --text: #f0f0f5;
+    --text-muted: #b0b0cc;
+    --text-dark: #2d3436;
+    --success: #00b894;
+    --warning: #fdcb6e;
+    --danger: #e17055;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(108, 92, 231, 0.15);
+    --shadow-glow: 0 0 30px rgba(108, 92, 231, 0.3);
+    --font: 'Outfit', sans-serif;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   RESET & GLOBAL
+   ============================================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font);
+    background: #0f0c29;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    transition: background 1.2s ease;
+}
+
+/* ============================================
+   ANIMATED BACKGROUND BLOBS
+   ============================================ */
+.bg-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: blobFloat 20s ease-in-out infinite;
+    transition: background 1.2s ease;
+}
+
+.blob-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #6c5ce7, transparent);
+    top: -10%;
+    left: -5%;
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #fd79a8, transparent);
+    top: 50%;
+    right: -10%;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.blob-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #00b894, transparent);
+    bottom: -5%;
+    left: 30%;
+    animation-delay: -10s;
+    animation-duration: 22s;
+}
+
+.blob-4 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #fdcb6e, transparent);
+    top: 30%;
+    left: 50%;
+    animation-delay: -15s;
+    animation-duration: 28s;
+}
+
+@keyframes blobFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(60px, -80px) scale(1.1);
+    }
+    50% {
+        transform: translate(-40px, 60px) scale(0.95);
+    }
+    75% {
+        transform: translate(80px, 40px) scale(1.05);
+    }
+}
+
+/* ============================================
+   FLOATING PARTICLES
+   ============================================ */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0;
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg);
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10vh) rotate(360deg);
+    }
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.site-header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 50px 20px 20px;
+    animation: slideDown 0.8s ease-out;
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #fff 0%, #a29bfe 50%, #fd79a8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(108, 92, 231, 0.4));
+}
+
+.logo span {
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.tagline {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RECIPE NAVIGATION
+   ============================================ */
+.recipe-nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px 20px 30px;
+    flex-wrap: wrap;
+    animation: slideUp 0.8s ease-out 0.2s both;
+}
+
+.nav-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 28px;
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text);
+    font-family: var(--font);
+    font-weight: 500;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    opacity: 0;
+    transition: opacity var(--transition);
+    z-index: -1;
+}
+
+.nav-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-glow);
+}
+
+.nav-card:hover::before {
+    opacity: 0.15;
+}
+
+.nav-card.active {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.3), rgba(253, 121, 168, 0.3));
+    box-shadow: 0 0 25px rgba(253, 121, 168, 0.3), inset 0 0 20px rgba(108, 92, 231, 0.1);
+}
+
+.nav-emoji {
+    font-size: 2rem;
+    transition: var(--transition);
+}
+
+.nav-card:hover .nav-emoji {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+/* ============================================
+   RECIPE CARD
+   ============================================ */
+.recipe-card {
+    display: none;
+    background: var(--surface-solid);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    animation: cardEnter 0.6s ease-out;
+}
+
+.recipe-card.active {
+    display: block;
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Card Image */
+.card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-height: 400px;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.recipe-card:hover .card-image-wrapper img {
+    transform: scale(1.05);
+}
+
+.card-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Card Body */
+.card-body {
+    padding: 35px 30px 30px;
+}
+
+.card-body h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff, var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Info Strip */
+.info-strip {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.info-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.info-chip:hover {
+    background: rgba(108, 92, 231, 0.2);
+    border-color: var(--primary-light);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.chip-icon {
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+.progress-container {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--success));
+    background-size: 200% 100%;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+    animation: shimmer 3s ease infinite;
+}
+
+.progress-text {
+    position: absolute;
+    right: 0;
+    top: -22px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ============================================
+   TOGGLE BUTTONS (Ingredients / Steps)
+   ============================================ */
+.toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    background: var(--glass);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 10px;
+    margin-right: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.toggle-btn:hover {
+    background: rgba(108, 92, 231, 0.25);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.2);
+}
+
+.toggle-btn .btn-icon {
+    font-size: 1.1rem;
+    transition: transform var(--transition);
+}
+
+.toggle-btn:hover .btn-icon {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* ============================================
+   INGREDIENT & STEP LISTS
+   ============================================ */
+.ingredient-list,
+.steps-list {
+    margin: 10px 0 20px 25px;
+    transition: var(--transition);
+}
+
+.ingredient-list li,
+.steps-list li {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    font-weight: 400;
+    color: var(--text-muted);
+    position: relative;
+}
+
+.ingredient-list li::before {
+    content: '✦';
+    margin-right: 10px;
+    color: var(--accent);
+    font-size: 0.7rem;
+}
+
+.ingredient-list li:hover,
+.steps-list li:hover {
+    color: #fff;
+    background: rgba(108, 92, 231, 0.12);
+    transform: translateX(8px);
+}
+
+.steps-list li.active {
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.25), rgba(253, 121, 168, 0.15));
+    border-left: 3px solid var(--accent);
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.15);
+}
+
+.hidden {
+    display: none;
+}
+
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+}
+
+.action-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: width 0.5s, height 0.5s, top 0.5s, left 0.5s;
+}
+
+.action-btn:active::after {
+    width: 300px;
+    height: 300px;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+}
+
+.start-btn {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+}
+
+.start-btn:hover {
+    box-shadow: 0 8px 30px rgba(108, 92, 231, 0.4);
+    transform: translateY(-3px);
+}
+
+.next-btn {
+    background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+    color: #fff;
+}
+
+.next-btn:hover {
+    box-shadow: 0 8px 30px rgba(253, 121, 168, 0.4);
+    transform: translateY(-3px);
+}
+
+.print-btn {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    backdrop-filter: blur(10px);
+}
+
+.print-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+/* ============================================
+   TIMER
+   ============================================ */
+.timer-display {
+    margin-top: 25px;
+    padding: 18px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    letter-spacing: 1px;
+}
+
+.timer-value {
+    color: var(--accent);
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 30px 20px 40px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 600px) {
+    .logo {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+    }
+
+    .recipe-nav {
+        gap: 10px;
+    }
+
+    .nav-card {
+        padding: 12px 18px;
+    }
+
+    .nav-emoji {
+        font-size: 1.5rem;
+    }
+
+    .nav-label {
+        font-size: 0.75rem;
+    }
+
+    .card-image-wrapper img {
+        height: 250px;
+    }
+
+    .card-body {
+        padding: 25px 20px 20px;
+    }
+
+    .card-body h2 {
+        font-size: 1.5rem;
+    }
+
+    .info-strip {
+        gap: 8px;
+    }
+
+    .info-chip {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+
+    .blob {
+        display: none;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    .bg-blobs,
+    .particles,
+    .site-header,
+    .recipe-nav,
+    .site-footer,
+    .action-buttons,
+    .progress-container {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: #333;
+    }
+
+    .recipe-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        background: white;
+    }
+
+    .card-body h2 {
+        -webkit-text-fill-color: #333;
+        color: #333;
+    }
+
+    .ingredient-list li,
+    .steps-list li {
+        color: #333;
+    }
+
+    .timer-display {
+        background: #f5f5f5;
+        color: #333;
+        border-color: #ddd;
+    }
+
+    .timer-value {
+        color: #e84393;
+    }
+}

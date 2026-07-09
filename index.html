@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore delicious interactive recipe cards for Chocolate Cake, Ice Cream, Biryani, and French Fries with step-by-step instructions.">
+    <title>Interactive Recipe Cards — Delicious Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Animated background blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+    </div>
+
+    <!-- Floating food particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-content">
+            <h1 class="logo">🍽️ Recipe<span>Lab</span></h1>
+            <p class="tagline">Craft Delicious Moments</p>
+        </div>
+    </header>
+
+    <!-- Recipe Navigation Gallery -->
+    <nav class="recipe-nav" id="recipeNav">
+        <button class="nav-card active" data-recipe="cake" id="navCake">
+            <span class="nav-emoji">🍫</span>
+            <span class="nav-label">Chocolate Cake</span>
+        </button>
+        <button class="nav-card" data-recipe="icecream" id="navIcecream">
+            <span class="nav-emoji">🍦</span>
+            <span class="nav-label">Ice Cream</span>
+        </button>
+        <button class="nav-card" data-recipe="biryani" id="navBiryani">
+            <span class="nav-emoji">🍛</span>
+            <span class="nav-label">Biryani</span>
+        </button>
+        <button class="nav-card" data-recipe="fries" id="navFries">
+            <span class="nav-emoji">🍟</span>
+            <span class="nav-label">French Fries</span>
+        </button>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container" id="mainContainer">
+
+        <!-- ===================== CHOCOLATE CAKE ===================== -->
+        <div class="recipe-card active" id="recipe-cake" data-time="30">
+            <div class="card-image-wrapper">
+                <img src="chocolate_cake.png" alt="Chocolate Cake">
+                <div class="card-badge">🍫 Dessert</div>
+            </div>
+            <div class="card-body">
+                <h2>Chocolate Cake</h2>
+                <div class="info-strip">
+                    <div class="info-chip"><span class="chip-icon">⏱️</span> <span class="time-display">30</span> min</div>
+                    <div class="info-chip"><span class="chip-icon">👥</span> 6 servings</div>
+                    <div class="info-chip"><span class="chip-icon">📊</span> Medium</div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                    <span class="progress-text">0%</span>
+                </div>
+
+                <button class="toggle-btn ingredient-btn" id="ingredientBtnCake">
+                    <span class="btn-icon">🧂</span> Show Ingredients
+                </button>
+                <ul class="ingredient-list hidden">
+                    <li>2 Cups Flour</li>
+                    <li>1 Cup Sugar</li>
+                    <li>1 Cup Cocoa Powder</li>
+                    <li>2 Eggs</li>
+                    <li>1 Cup Milk</li>
+                    <li>Butter</li>
+                    <li>Baking Powder</li>
+                </ul>
+
+                <button class="toggle-btn steps-btn" id="stepsBtnCake">
+                    <span class="btn-icon">📋</span> Show Steps
+                </button>
+                <ol class="steps-list hidden">
+                    <li>Mix all dry ingredients.</li>
+                    <li>Add eggs and milk.</li>
+                    <li>Mix until smooth.</li>
+                    <li>Pour into baking tray.</li>
+                    <li>Bake for 30 minutes.</li>
+                    <li>Allow cake to cool.</li>
+                    <li>Serve and enjoy!</li>
+                </ol>
+
+                <div class="action-buttons">
+                    <button class="action-btn start-btn">▶ Start Cooking</button>
+                    <button class="action-btn next-btn">⏭ Next Step</button>
+                    <button class="action-btn print-btn" onclick="window.print()">🖨 Print</button>
+                </div>
+
+                <div class="timer-display">
+                    ⏰ Remaining: <span class="timer-value">30:00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== ICE CREAM ===================== -->
+        <div class="recipe-card" id="recipe-icecream" data-time="240">
+            <div class="card-image-wrapper">
+                <img src="ice_cream.png" alt="Ice Cream">
+                <div class="card-badge">🍦 Frozen</div>
+            </div>
+            <div class="card-body">
+                <h2>Homemade Ice Cream</h2>
+                <div class="info-strip">
+                    <div class="info-chip"><span class="chip-icon">⏱️</span> <span class="time-display">240</span> min</div>
+                    <div class="info-chip"><span class="chip-icon">👥</span> 8 servings</div>
+                    <div class="info-chip"><span class="chip-icon">📊</span> Easy</div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                    <span class="progress-text">0%</span>
+                </div>
+
+                <button class="toggle-btn ingredient-btn">
+                    <span class="btn-icon">🧂</span> Show Ingredients
+                </button>
+                <ul class="ingredient-list hidden">
+                    <li>2 Cups Heavy Cream</li>
+                    <li>1 Cup Whole Milk</li>
+                    <li>¾ Cup Sugar</li>
+                    <li>2 tsp Vanilla Extract</li>
+                    <li>Pinch of Salt</li>
+                    <li>Toppings of your choice</li>
+                </ul>
+
+                <button class="toggle-btn steps-btn">
+                    <span class="btn-icon">📋</span> Show Steps
+                </button>
+                <ol class="steps-list hidden">
+                    <li>Whisk sugar into milk until dissolved.</li>
+                    <li>Add heavy cream and vanilla extract.</li>
+                    <li>Add a pinch of salt and mix well.</li>
+                    <li>Pour mixture into ice cream maker.</li>
+                    <li>Churn for 20–25 minutes until thick.</li>
+                    <li>Transfer to a container and freeze for 4 hours.</li>
+                    <li>Scoop, add toppings, and enjoy!</li>
+                </ol>
+
+                <div class="action-buttons">
+                    <button class="action-btn start-btn">▶ Start Cooking</button>
+                    <button class="action-btn next-btn">⏭ Next Step</button>
+                    <button class="action-btn print-btn" onclick="window.print()">🖨 Print</button>
+                </div>
+
+                <div class="timer-display">
+                    ⏰ Remaining: <span class="timer-value">240:00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== BIRYANI ===================== -->
+        <div class="recipe-card" id="recipe-biryani" data-time="60">
+            <div class="card-image-wrapper">
+                <img src="biryani.png" alt="Biryani">
+                <div class="card-badge">🍛 Main Course</div>
+            </div>
+            <div class="card-body">
+                <h2>Chicken Biryani</h2>
+                <div class="info-strip">
+                    <div class="info-chip"><span class="chip-icon">⏱️</span> <span class="time-display">60</span> min</div>
+                    <div class="info-chip"><span class="chip-icon">👥</span> 4 servings</div>
+                    <div class="info-chip"><span class="chip-icon">📊</span> Hard</div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                    <span class="progress-text">0%</span>
+                </div>
+
+                <button class="toggle-btn ingredient-btn">
+                    <span class="btn-icon">🧂</span> Show Ingredients
+                </button>
+                <ul class="ingredient-list hidden">
+                    <li>500g Chicken (bone-in)</li>
+                    <li>2 Cups Basmati Rice (soaked)</li>
+                    <li>2 Onions (thinly sliced, fried)</li>
+                    <li>1 Cup Yogurt</li>
+                    <li>Biryani Masala (2 tbsp)</li>
+                    <li>Saffron strands in warm milk</li>
+                    <li>Ghee, Ginger-Garlic paste</li>
+                    <li>Fresh Mint & Cilantro</li>
+                    <li>Whole spices (bay leaf, cardamom, cinnamon)</li>
+                </ul>
+
+                <button class="toggle-btn steps-btn">
+                    <span class="btn-icon">📋</span> Show Steps
+                </button>
+                <ol class="steps-list hidden">
+                    <li>Marinate chicken with yogurt, masala & ginger-garlic paste for 30 min.</li>
+                    <li>Parboil basmati rice with whole spices until 70% cooked. Drain.</li>
+                    <li>Fry sliced onions until deep golden brown. Set aside.</li>
+                    <li>Layer marinated chicken at the bottom of a heavy pot.</li>
+                    <li>Add a layer of rice, fried onions, mint, cilantro & saffron milk.</li>
+                    <li>Seal the pot with dough or foil and cook on low heat (dum) for 25 min.</li>
+                    <li>Gently mix, garnish with fried onions & serve hot!</li>
+                </ol>
+
+                <div class="action-buttons">
+                    <button class="action-btn start-btn">▶ Start Cooking</button>
+                    <button class="action-btn next-btn">⏭ Next Step</button>
+                    <button class="action-btn print-btn" onclick="window.print()">🖨 Print</button>
+                </div>
+
+                <div class="timer-display">
+                    ⏰ Remaining: <span class="timer-value">60:00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== FRENCH FRIES ===================== -->
+        <div class="recipe-card" id="recipe-fries" data-time="25">
+            <div class="card-image-wrapper">
+                <img src="french_fries.png" alt="French Fries">
+                <div class="card-badge">🍟 Snack</div>
+            </div>
+            <div class="card-body">
+                <h2>Crispy French Fries</h2>
+                <div class="info-strip">
+                    <div class="info-chip"><span class="chip-icon">⏱️</span> <span class="time-display">25</span> min</div>
+                    <div class="info-chip"><span class="chip-icon">👥</span> 4 servings</div>
+                    <div class="info-chip"><span class="chip-icon">📊</span> Easy</div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                    <span class="progress-text">0%</span>
+                </div>
+
+                <button class="toggle-btn ingredient-btn">
+                    <span class="btn-icon">🧂</span> Show Ingredients
+                </button>
+                <ul class="ingredient-list hidden">
+                    <li>4 Large Potatoes</li>
+                    <li>Oil for deep frying</li>
+                    <li>Salt to taste</li>
+                    <li>Paprika (optional)</li>
+                    <li>Garlic powder (optional)</li>
+                    <li>Ketchup for serving</li>
+                </ul>
+
+                <button class="toggle-btn steps-btn">
+                    <span class="btn-icon">📋</span> Show Steps
+                </button>
+                <ol class="steps-list hidden">
+                    <li>Peel and cut potatoes into thin strips.</li>
+                    <li>Soak in cold water for 30 minutes. Drain and pat dry.</li>
+                    <li>Heat oil to 300°F (150°C). Fry strips for 5 min (blanch fry). Remove.</li>
+                    <li>Increase oil to 375°F (190°C).</li>
+                    <li>Fry again for 2–3 minutes until golden and crispy.</li>
+                    <li>Drain on paper towels. Season with salt immediately.</li>
+                    <li>Serve hot with ketchup!</li>
+                </ol>
+
+                <div class="action-buttons">
+                    <button class="action-btn start-btn">▶ Start Cooking</button>
+                    <button class="action-btn next-btn">⏭ Next Step</button>
+                    <button class="action-btn print-btn" onclick="window.print()">🖨 Print</button>
+                </div>
+
+                <div class="timer-display">
+                    ⏰ Remaining: <span class="timer-value">25:00</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Made with ❤️ — Interactive Recipe Cards</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
